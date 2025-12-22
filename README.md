@@ -103,4 +103,3 @@ Bootstrap scripts handle this linking safely.
 
 This repository evolves slowly and intentionally.
 Stability is preferred over novelty.
-```
