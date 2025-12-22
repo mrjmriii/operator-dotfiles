@@ -1,4 +1,3 @@
-```markdown
 # Operator Dotfiles
 
 This repository defines **operator identity**.
