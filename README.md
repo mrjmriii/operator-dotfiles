@@ -17,6 +17,20 @@ It does **not** contain:
 - secrets or credentials
 - client-specific logic
 
+## What I optimize for
+- reproducibility over novelty
+- minimal surprises (safe defaults)
+- portability across Linux hosts
+- clear separation between operator and infrastructure
+
+## Non-goals
+- storing secrets or host-specific data
+- replacing full config management
+- embedding lab or client automation
+
+## Tooling baseline
+See `TOOLS.md` for the conservative toolchain I expect on a workstation.
+
 ## Design Principles
 
 - **Identity is portable**
@@ -63,6 +77,13 @@ Profiles may define:
 - context-aware behavior
 
 Profiles are optional and additive.
+Local-only overrides should live in:
+
+```text
+.config/shell/profiles/local/
+```
+
+This directory is intentionally gitignored.
 
 ## Trust Model
 
@@ -96,6 +117,26 @@ And linked into the system via:
 ```
 
 Bootstrap scripts handle this linking safely.
+
+## Repo layout (current)
+
+```text
+operator-dotfiles/
+├── .config/shell/
+│   ├── init.sh
+│   ├── common.sh
+│   ├── functions.sh
+│   ├── aliases.sh
+│   ├── bash.sh
+│   ├── zsh.sh
+│   └── profiles/default/
+│       ├── env.sh
+│       └── prompt.sh
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+└── VERSION
+```
 
 ---
 

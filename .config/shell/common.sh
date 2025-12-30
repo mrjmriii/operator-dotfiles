@@ -1,34 +1,24 @@
-# --------------------------------------------------
-# Common shell configuration
-#
-# Purpose:
-# - Human-facing defaults
-# - Portable across bash and zsh
-# - No shell-specific syntax
-#
-# This file is safe to source from any POSIX shell.
-# --------------------------------------------------
+#!/usr/bin/env bash
+# Shared shell defaults (safe, minimal, portable).
 
-# NOTE:
-# Icons intentionally disabled.
-# Rationale: cleaner output, better SSH/log readability,
-# less visual noise for infrastructure work.
+set -o nounset
 
+export EDITOR="${EDITOR:-vi}"
+export PAGER="${PAGER:-less}"
+export LESS="-FRX"
 
-# eza: opinionated defaults with override support
-eza() {
-  command eza \
-    --long \
-    --group \
-    --git \
-    --header \
-    --group-directories-first \
-    --time-style=iso \
-    "$@"
-}
+# History defaults (Bash honors HIST*; Zsh reads but uses its own settings).
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+export HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT='%F %T '
 
-# Semantic views (mental model commands)
-alias audit='eza --long --git'
-alias topo='eza --tree --level=3 --group-directories-first'
-alias reveal='eza --all --long --git'
-alias iac-tree='eza --tree --level=4 --group-directories-first'
+# PATH hygiene
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+if [ -d "$HOME/bin" ]; then
+  export PATH="$HOME/bin:$PATH"
+fi
+
+umask 022
