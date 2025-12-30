@@ -31,6 +31,18 @@ It does **not** contain:
 ## Tooling baseline
 See `TOOLS.md` for the conservative toolchain I expect on a workstation.
 
+## Quick install
+
+```bash
+./install.sh
+```
+
+Then add this to `~/.zshrc` (or `~/.bashrc`):
+
+```bash
+source ~/.config/shell/init.sh
+```
+
 ## Design Principles
 
 - **Identity is portable**
@@ -133,8 +145,10 @@ operator-dotfiles/
 │       ├── env.sh
 │       └── prompt.sh
 ├── CHANGELOG.md
+├── install.sh
 ├── LICENSE
 ├── README.md
+├── TOOLS.md
 └── VERSION
 ```
 

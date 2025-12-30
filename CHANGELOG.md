@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.3
+- Add safe installer and quick-start instructions.
+
 ## 0.1.2
 - Add Zsh history persistence and git-aware prompt.
 - Add minimal tooling baseline and local override guidance.
