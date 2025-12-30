@@ -55,6 +55,11 @@ This allows:
 - using the same identity across many repos
 - clean separation between operator and infrastructure
 
+## Architecture notes
+- Layered shell design: shared defaults + shell-specific behavior + profile overrides.
+- Profiles keep context changes explicit and reversible (no hidden drift).
+- Installation is non-destructive by default; opt-in replacement only.
+
 ## Shell Philosophy
 
 - **Bash** is used for infrastructure and scripting
